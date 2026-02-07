@@ -1,5 +1,38 @@
-const palindromes = function () {
+function isAlphaNumeric(char) {
+    
+  const code = char.charCodeAt(0);
 
+  if (!(code > 47 && code < 58) && 
+      !(code > 64 && code < 91) && 
+      !(code > 96 && code < 123)) { 
+    return false;
+  }
+  return true;
+};
+
+const palindromes = function(s) {
+
+    s = s.toLowerCase();
+
+    let st = 0, dr = s.length - 1;
+
+    while(st < dr) {
+
+        while(st < dr && !isAlphaNumeric(s[st]))
+            st++;
+
+        while(st < dr && !isAlphaNumeric(s[dr]))
+            dr--;
+
+        if(s[st] !== s[dr])
+            return false;
+
+        st++;
+        dr--;
+    }
+        
+
+    return true;
 };
 
 // Do not edit below this line
